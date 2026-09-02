@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ZEnum — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- ════════════ NAV ════════════ -->
+<nav>
+  <span class="nav-logo"><img src="New folder/zenum.png" alt="" srcset=""><span>.</span> ZEnum</span>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact-wrap">Contact</a></li>
+  </ul>
+  <a href="#contact-wrap" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#7c6bff"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        <radialGradient id="g2" cx="80%" cy="60%"><stop offset="0%" stop-color="#3dffa0"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+      </defs>
+      <ellipse cx="360" cy="280" rx="400" ry="300" fill="url(#g1)"/>
+      <ellipse cx="960" cy="420" rx="300" ry="220" fill="url(#g2)"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span>Available for work ·</div>
+      <h1 class="hero-title">I build the<br><em>web</em> you<br>imagine.</h1>
+      <p class="hero-sub">Full-stack web developer specialising in fast, accessible, pixel-perfect interfaces and rock-solid APIs. Five years shipping products people love.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">My Work</a>
+        <a href="#contact-wrap" class="btn-outline">Let's Talk</a>
+      </div>
+      <div class="hero-tags" style="margin-top:32px">
+        <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag">Tailwind</span><span class="tag">REST APIs</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n">40+</span><span class="stat-l">Projects</span></div>
+        <div class="stat"><span class="stat-n">5yr</span><span class="stat-l">Experience</span></div>
+        <div class="stat"><span class="stat-n">30+</span><span class="stat-l">Clients</span></div>
+      </div>
+      <div style="margin-top:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:12px">
+        <div style="color:var(--muted);margin-bottom:12px;font-size:10px;letter-spacing:.1em">CURRENT STACK</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text)">Frontend</span><span style="color:var(--accent)">React / Next.js</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text)">Backend</span><span style="color:var(--green)">Node / Express</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text)">Database</span><span style="color:var(--orange)">Postgres / Redis</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text)">Deploy</span><span style="color:var(--accent)">Vercel / Railway</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text)">Status</span><span style="color:var(--green);display:flex;align-items:center;gap:5px"><span class="badge-dot"></span>Open to work</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PROJECTS ════════════ -->
+<section class="section" id="projects">
+  <div class="s-label">Real Working Projects</div>
+  <h2 class="s-title">What I Build</h2>
+  <p class="s-sub">Tap any project to open it in a new tab — no screenshots, no demos.</p>
+
+  <div class="projects-grid">
+
+    <!-- ── 1. CSS VARIABLES PLAYGROUND (full-width) ── -->
+    <div class="project-card full reveal">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 css-playground.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="CSS Variables Playground" src="projects/css-variables-playground.html"></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">CSS Variables</span><span class="tech-pill">Live DOM</span><span class="tech-pill">Design Tokens</span><span class="tech-pill">Vanilla JS</span></div>
+        <div class="project-name">CSS Variables Playground</div>
+        <p class="project-desc">An interactive design-token explorer. Tweak colours, radii, shadows, spacing and grid properties with sliders — the preview updates instantly and the generated CSS stays in sync. Demonstrates deep understanding of the CSS cascade.</p>
+      </div>
+    </div>
+
+    <!-- ── 2. LIVE HTML/CSS/JS EDITOR ── -->
+    <div class="project-card reveal reveal-delay-1">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 codepen.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="Live Code Editor" srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:monospace;background:#0a0a0e;color:#ccc;display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.toolbar{background:#111118;border-bottom:1px solid #1e1e2e;padding:8px 12px;display:flex;gap:8px;align-items:center;flex-shrink:0}
+.tab{padding:5px 14px;background:transparent;border:1px solid #1e1e2e;color:#666;font-family:monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .15s}
+.tab.active{background:#7c6bff;color:#fff;border-color:#7c6bff}
+.run-btn{margin-left:auto;padding:5px 16px;background:#3dffa0;color:#0a0a0e;font-family:monospace;font-size:11px;font-weight:700;border:none;cursor:pointer;border-radius:3px;letter-spacing:.06em}
+.run-btn:hover{background:#5fffb4}
+.editors{flex:1;display:grid;grid-template-rows:1fr;overflow:hidden;position:relative}
+.editor-pane{display:none;flex-direction:column;height:100%}
+.editor-pane.show{display:flex}
+.pane-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#444;padding:5px 10px;background:#0d0d12;border-bottom:1px solid #1a1a22}
+textarea{flex:1;background:#0a0a0e;border:none;outline:none;color:#e0ddf5;font-family:monospace;font-size:12px;line-height:1.7;padding:12px;resize:none;tab-size:2}
+textarea::selection{background:#7c6bff33}
+.preview-pane{display:none;flex:1;flex-direction:column;height:100%}
+.preview-pane.show{display:flex}
+iframe#preview{flex:1;border:none;background:#fff}
+</style></head><body>
+<div class="toolbar">
+  <button class="tab active" onclick="show(\'html\')">HTML</button>
+  <button class="tab" onclick="show(\'css\')">CSS</button>
+  <button class="tab" onclick="show(\'js\')">JS</button>
+  <button class="tab" onclick="show(\'preview\')">Preview</button>
+  <button class="run-btn" onclick="runCode()">▶ Run</button>
+</div>
+<div class="editors">
+  <div class="editor-pane show" id="pane-html"><div class="pane-label">index.html</div><textarea id="ed-html" spellcheck="false">&lt;!-- Edit here and click Run --&gt;
+&lt;div class="card"&gt;
+  &lt;h1&gt;Hello World 🌍&lt;/h1&gt;
+  &lt;p&gt;Edit the HTML, CSS and JS tabs, then click &lt;strong&gt;Run&lt;/strong&gt;.&lt;/p&gt;
+  &lt;button onclick="greet()"&gt;Click Me&lt;/button&gt;
+  &lt;p id="msg"&gt;&lt;/p&gt;
+&lt;/div&gt;</textarea></div>
+  <div class="editor-pane" id="pane-css"><div class="pane-label">style.css</div><textarea id="ed-css" spellcheck="false">body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(135deg,#0f0f1a,#1a1a2e);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: #e0ddf5;
+}
+.card {
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,.4);
+}
+h1 { font-size: 32px; margin-bottom: 12px; }
+p  { color: #aaa; line-height: 1.7; }
+button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  background: #7c6bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .15s;
+}
+button:hover { transform: scale(1.05); }
+#msg { margin-top: 12px; color: #3dffa0; font-weight: 600; }</textarea></div>
+  <div class="editor-pane" id="pane-js"><div class="pane-label">script.js</div><textarea id="ed-js" spellcheck="false">function greet() {
+  const msgs = [
+    "You clicked it! 🎉",
+    "Nice click! 👍",
+    "JavaScript is alive! ⚡",
+    "Events are fun! 🚀"
+  ];
+  const el = document.getElementById("msg");
+  el.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+}</textarea></div>
+  <div class="preview-pane" id="pane-preview"><div class="pane-label">preview</div><iframe id="preview"></iframe></div>
+</div>
+<script>
+let current="html";
+function show(tab){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".editor-pane,.preview-pane").forEach(p=>p.classList.remove("show"));
+  event.target.classList.add("active");
+  if(tab==="preview"){document.getElementById("pane-preview").classList.add("show");runCode();}
+  else document.getElementById("pane-"+tab).classList.add("show");
+  current=tab;
+}
+function runCode(){
+  const eh=document.getElementById("ed-html");
+  const ec=document.getElementById("ed-css");
+  const ej=document.getElementById("ed-js");
+  const fr=document.getElementById("preview");
+  if(!eh||!ec||!ej||!fr) return;
+  const html=eh.value;
+  const css=ec.value;
+  const js=ej.value;
+  const doc=`<!DOCTYPE html><html><head><style>${css}</style></head><body>${html}<script>${js}<\/script></body></html>`;
+  fr.srcdoc=doc;
+}
+// initial run
+setTimeout(runCode,200);
+</script></body></html>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">HTML</span><span class="tech-pill">CSS</span><span class="tech-pill">JavaScript</span><span class="tech-pill">iframe Sandbox</span></div>
+        <div class="project-name">In-Browser Code Editor</div>
+        <p class="project-desc">A working CodePen-style editor with separate HTML, CSS and JS tabs. Edit the code and hit Run — the output renders live in a sandboxed iframe. Switch between panes freely, no setup required.</p>
+      </div>
+    </div>
+  </iframe>
+
+    <!-- ── 3. WEATHER DASHBOARD ── -->
+    <div class=" weather project-card reveal reveal-delay-2">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 weather.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="Weather Dashboard" srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:linear-gradient(160deg,#0d1b2a,#1b2d42,#0a1018);min-height:100vh;color:#e8f4ff;padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.search-row{display:flex;gap:8px;width:100%;max-width:520px}
+input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;font-size:14px;padding:10px 14px;outline:none}
+input:focus{border-color:#5b9fff}
+input::placeholder{color:rgba(255,255,255,.3)}
+button{padding:10px 20px;background:#5b9fff;color:#0d1b2a;font-weight:700;font-size:13px;border:none;border-radius:8px;cursor:pointer;white-space:nowrap}
+button:hover{background:#7bb4ff}
+#err{color:#ff8080;font-size:13px;display:none;font-family:monospace}
+#loading{color:rgba(255,255,255,.4);font-size:13px;display:none;font-family:monospace}
+#cards{width:100%;max-width:520px;display:none;flex-direction:column;gap:12px}
+.main-card{background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;display:flex;justify-content:space-between;align-items:center}
+.temp-big{font-size:64px;font-weight:800;line-height:1;letter-spacing:-.04em}
+.city-name{font-size:20px;font-weight:700;margin-bottom:4px}
+.desc{font-size:14px;color:rgba(255,255,255,.5);text-transform:capitalize;margin-bottom:12px}
+.weather-icon{font-size:60px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.detail-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px}
+.detail-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px}
+.detail-val{font-size:20px;font-weight:700;color:#fff}
+.detail-unit{font-size:12px;color:rgba(255,255,255,.4);margin-left:2px}
+.forecast-row{display:flex;gap:8px}
+.f-card{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center}
+.f-day{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+.f-icon{font-size:20px;margin-bottom:4px}
+.f-temp{font-size:14px;font-weight:700}
+</style></head><body>
+<div class="search-row">
+  <input id="city" placeholder="Enter a city — try Lagos, London, Tokyo…" onkeydown="if(event.key===&apos;Enter&apos;)go()"/>
+  <button onclick="go()">Search</button>
+</div>
+<div id="loading">⏳ Fetching weather…</div>
+<div id="err"></div>
+<div id="cards">
+  <div class="main-card">
+    <div>
+      <div class="city-name" id="w-city">—</div>
+      <div class="desc" id="w-desc">—</div>
+      <div class="temp-big"><span id="w-temp">—</span><span style="font-size:28px;color:rgba(255,255,255,.5)">°C</span></div>
+    </div>
+    <div class="weather-icon" id="w-icon">🌤</div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-box"><div class="detail-label">Feels Like</div><div class="detail-val"><span id="w-feels">—</span><span class="detail-unit">°C</span></div></div>
+    <div class="detail-box"><div class="detail-label">Humidity</div><div class="detail-val"><span id="w-hum">—</span><span class="detail-unit">%</span></div></div>
+    <div class="detail-box"><div class="detail-label">Wind Speed</div><div class="detail-val"><span id="w-wind">—</span><span class="detail-unit">km/h</span></div></div>
+    <div class="detail-box"><div class="detail-label">UV Index</div><div class="detail-val"><span id="w-uv">—</span></div></div>
+  </div>
+  <div class="forecast-row" id="forecast"></div>
+</div>
+<script>
+const icons={0:"☀️",1:"🌤",2:"⛅",3:"☁️",45:"🌫",48:"🌫",51:"🌦",53:"🌦",55:"🌧",61:"🌧",63:"🌧",65:"🌧",71:"🌨",73:"🌨",75:"❄️",80:"🌦",81:"🌧",82:"⛈",95:"⛈",96:"⛈",99:"⛈"};
+const desc={0:"Clear sky",1:"Mainly clear",2:"Partly cloudy",3:"Overcast",45:"Foggy",48:"Depositing rime fog",51:"Light drizzle",53:"Moderate drizzle",55:"Dense drizzle",61:"Slight rain",63:"Moderate rain",65:"Heavy rain",71:"Slight snow",73:"Moderate snow",75:"Heavy snow",80:"Slight showers",81:"Moderate showers",82:"Violent showers",95:"Thunderstorm",96:"Thunderstorm + hail",99:"Heavy thunderstorm"};
+const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+async function go(){
+  const city=document.getElementById("city").value.trim();
+  if(!city)return;
+  const err=document.getElementById("err");
+  const ld=document.getElementById("loading");
+  const cards=document.getElementById("cards");
+  err.style.display="none"; ld.style.display="block"; cards.style.display="none";
+  try{
+    const gr=await fetch("https://geocoding-api.open-meteo.com/v1/search?name="+encodeURIComponent(city)+"&count=1&language=en&format=json");
+    const gd=await gr.json();
+    if(!gd.results?.length) throw new Error("City not found. Try: Lagos, London, Paris");
+    const {latitude:lat,longitude:lon,name,country}=gd.results[0];
+    const wr=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=5`);
+    const wd=await wr.json();
+    const c=wd.current;
+    document.getElementById("w-city").textContent=name+", "+country;
+    document.getElementById("w-desc").textContent=desc[c.weather_code]||"Unknown";
+    document.getElementById("w-temp").textContent=Math.round(c.temperature_2m);
+    document.getElementById("w-feels").textContent=Math.round(c.apparent_temperature);
+    document.getElementById("w-hum").textContent=c.relative_humidity_2m;
+    document.getElementById("w-wind").textContent=Math.round(c.wind_speed_10m);
+    document.getElementById("w-uv").textContent=c.uv_index??"-";
+    document.getElementById("w-icon").textContent=icons[c.weather_code]||"🌡";
+    const fc=document.getElementById("forecast");
+    fc.innerHTML=wd.daily.time.slice(0,5).map((t,i)=>{
+      const d=new Date(t+"T00:00");
+      return `<div class="f-card"><div class="f-day">${days[d.getDay()]}</div><div class="f-icon">${icons[wd.daily.weather_code[i]]||"🌡"}</div><div class="f-temp">${Math.round(wd.daily.temperature_2m_max[i])}°</div><div style="font-size:11px;color:rgba(255,255,255,.35)">${Math.round(wd.daily.temperature_2m_min[i])}°</div></div>`;
+    }).join("");
+    ld.style.display="none"; cards.style.display="flex";
+  }catch(e){ld.style.display="none"; err.textContent="⚠ "+e.message; err.style.display="block";}
+}
+go.call({},{target:{value:""}});
+document.getElementById("city").value="Lagos";
+setTimeout(go,100);
+</script></body></html>'></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Fetch API</span><span class="tech-pill">Open-Meteo</span><span class="tech-pill">Async/Await</span><span class="tech-pill">Geocoding</span></div>
+        <div class="project-name">Live Weather Dashboard</div>
+        <p class="project-desc">Real weather data via the Open-Meteo API (no key required). Geocodes any city name, then fetches current conditions plus a 5-day forecast. Showcases async fetch workflows and dynamic DOM rendering.</p>
+      </div>
+    </div>
+
+    <!-- ── 4. KANBAN BOARD ── -->
+    <div class=" we project-card reveal reveal-delay-3">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 kanban.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="Kanban Board" srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#09090e;color:#ddd8f0;min-height:100vh;padding:20px;user-select:none}
+h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:16px;font-family:monospace;display:flex;justify-content:space-between;align-items:center}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;height:calc(100vh - 80px)}
+.col{background:#111118;border:1px solid #1e1e2e;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto}
+.col.drag-over{border-color:#7c6bff;background:#14141e}
+.col-title-wrap{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.col-count{background:#1e1e2e;border-radius:20px;padding:2px 8px;font-size:10px;color:#666;font-family:monospace}
+.card{background:#1a1a24;border:1px solid #2a2a38;border-radius:8px;padding:12px;cursor:grab;transition:transform .15s,box-shadow .15s,opacity .15s;font-size:13px;line-height:1.5}
+.card:active{cursor:grabbing}
+.card.dragging{opacity:.3;transform:scale(.97)}
+.card.ghost{border:2px dashed #7c6bff;background:transparent;height:52px}
+.card-tag{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-family:monospace;margin-bottom:6px}
+.tag-bug{background:rgba(255,77,109,.15);color:#ff4d6d}
+.tag-feat{background:rgba(61,255,160,.12);color:#3dffa0}
+.tag-design{background:rgba(124,107,255,.15);color:#9b8dff}
+.tag-docs{background:rgba(255,140,66,.15);color:#ff8c42}
+.card-title{color:#e0ddf5;font-weight:500}
+.card-meta{font-size:11px;color:#555;margin-top:6px;font-family:monospace}
+.del{float:right;background:none;border:none;color:#333;cursor:pointer;font-size:14px;padding:0 2px;line-height:1}
+.del:hover{color:#ff4d6d}
+.add-btn{margin-top:auto;padding:8px;background:transparent;border:1px dashed #2a2a38;border-radius:6px;color:#555;font-size:12px;cursor:pointer;font-family:monospace;transition:all .2s;flex-shrink:0}
+.add-btn:hover{border-color:#7c6bff;color:#9b8dff}
+.add-form{display:none;flex-direction:column;gap:6px;margin-top:4px;flex-shrink:0}
+.add-form.open{display:flex}
+.add-input,.add-sel{background:#0e0e16;border:1px solid #2a2a38;color:#e0ddf5;border-radius:5px;padding:7px 10px;font-size:12px;font-family:monospace;outline:none;width:100%}
+.add-input:focus,.add-sel:focus{border-color:#7c6bff}
+.add-row{display:flex;gap:6px}
+.add-ok,.add-cancel{flex:1;padding:6px;border:none;border-radius:5px;font-size:11px;cursor:pointer;font-family:monospace;font-weight:600}
+.add-ok{background:#7c6bff;color:#fff}
+.add-cancel{background:#1e1e2e;color:#888}
+</style></head><body>
+<div class="board">
+  <div class="col" id="col-todo" ondragover="dov(event)" ondrop="drop(event,'todo')" ondragleave="dlv(event)">
+    <div class="col-title-wrap"><h2 style="margin:0">📋 To Do <span class="col-count" id="cnt-todo">0</span></h2></div>
+    <div id="cards-todo"></div>
+    <button class="add-btn" onclick="openForm('todo')">+ Add card</button>
+    <div class="add-form" id="form-todo">
+      <input class="add-input" id="inp-todo" placeholder="Task title…"/>
+      <select class="add-sel" id="sel-todo"><option value="feat">✨ Feature</option><option value="bug">🐛 Bug</option><option value="design">🎨 Design</option><option value="docs">📄 Docs</option></select>
+      <div class="add-row"><button class="add-ok" onclick="addCard('todo')">Add</button><button class="add-cancel" onclick="closeForm('todo')">Cancel</button></div>
+    </div>
+  </div>
+  <div class="col" id="col-doing" ondragover="dov(event)" ondrop="drop(event,'doing')" ondragleave="dlv(event)">
+    <div class="col-title-wrap"><h2 style="margin:0">🔧 In Progress <span class="col-count" id="cnt-doing">0</span></h2></div>
+    <div id="cards-doing"></div>
+    <button class="add-btn" onclick="openForm(&apos;doing&apos;)">+ Add card</button>
+    <div class="add-form" id="form-doing">
+      <input class="add-input" id="inp-doing" placeholder="Task title…"/>
+      <select class="add-sel" id="sel-doing"><option value="feat">✨ Feature</option><option value="bug">🐛 Bug</option><option value="design">🎨 Design</option><option value="docs">📄 Docs</option></select>
+      <div class="add-row"><button class="add-ok" onclick="addCard(&apos;doing&apos;)">Add</button><button class="add-cancel" onclick="closeForm(&apos;doing&apos;)">Cancel</button></div>
+    </div>
+  </div>
+  <div class="col" id="col-done" ondragover="dov(event)" ondrop="drop(event,'done')" ondragleave="dlv(event)">
+    <div class="col-title-wrap"><h2 style="margin:0">✅ Done <span class="col-count" id="cnt-done">0</span></h2></div>
+    <div id="cards-done"></div>
+    <button class="add-btn" onclick="openForm(&apos;done&apos;)">+ Add card</button>
+    <div class="add-form" id="form-done">
+      <input class="add-input" id="inp-done" placeholder="Task title…"/>
+      <select class="add-sel" id="sel-done"><option value="feat">✨ Feature</option><option value="bug">🐛 Bug</option><option value="design">🎨 Design</option><option value="docs">📄 Docs</option></select>
+      <div class="add-row"><button class="add-ok" onclick="addCard(&apos;done&apos;)">Add</button><button class="add-cancel" onclick="closeForm(&apos;done&apos;)">Cancel</button></div>
+    </div>
+  </div>
+</div>
+<script>
+let boards={todo:[{id:1,title:"Design landing page hero",tag:"design"},{id:2,title:"Set up CI/CD pipeline",tag:"docs"},{id:3,title:"Fix nav dropdown on mobile",tag:"bug"}],doing:[{id:4,title:"Build authentication flow",tag:"feat"},{id:5,title:"Optimize image loading",tag:"feat"}],done:[{id:6,title:"Initialise Next.js project",tag:"docs"}]};
+let dragId=null,dragCol=null,idCtr=7;
+const tags={bug:"tag-bug",feat:"tag-feat",design:"tag-design",docs:"tag-docs"};
+const tagLabel={bug:"🐛 Bug",feat:"✨ Feature",design:"🎨 Design",docs:"📄 Docs"};
+function render(){
+  ["todo","doing","done"].forEach(col=>{
+    const el=document.getElementById("cards-"+col);
+    el.innerHTML=boards[col].map(c=>`<div class="card" id="c${c.id}" draggable="true" ondragstart="dstart(event,${c.id},&apos;${col}&apos;)" ondragend="dend(event)"><button class="del" onclick="del(${c.id},&apos;${col}&apos;)">×</button><span class="card-tag ${tags[c.tag]}">${tagLabel[c.tag]}</span><div class="card-title">${esc(c.title)}</div><div class="card-meta">#${c.id}</div></div>`).join("");
+    document.getElementById("cnt-"+col).textContent=boards[col].length;
+  });
+}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function dstart(e,id,col){dragId=id;dragCol=col;setTimeout(()=>{const el=document.getElementById("c"+id);if(el)el.classList.add("dragging");},0)}
+function dend(e){document.querySelectorAll(".card").forEach(c=>c.classList.remove("dragging"));document.querySelectorAll(".col").forEach(c=>c.classList.remove("drag-over"));}
+function dov(e){e.preventDefault();e.currentTarget.classList.add("drag-over")}
+function dlv(e){e.currentTarget.classList.remove("drag-over")}
+function drop(e,toCol){
+  e.preventDefault();e.currentTarget.classList.remove("drag-over");
+  if(dragId===null||toCol===dragCol)return;
+  const card=boards[dragCol].find(c=>c.id===dragId);
+  boards[dragCol]=boards[dragCol].filter(c=>c.id!==dragId);
+  boards[toCol].push(card);
+  dragId=null;dragCol=null;render();
+}
+function del(id,col){boards[col]=boards[col].filter(c=>c.id!==id);render()}
+function openForm(col){document.getElementById("form-"+col).classList.add("open");document.getElementById("inp-"+col).focus()}
+function closeForm(col){document.getElementById("form-"+col).classList.remove("open");document.getElementById("inp-"+col).value=""}
+function addCard(col){
+  const inp=document.getElementById("inp-"+col);
+  const sel=document.getElementById("sel-"+col);
+  if(!inp.value.trim())return;
+  boards[col].push({id:idCtr++,title:inp.value.trim(),tag:sel.value});
+  closeForm(col);render();
+}
+document.addEventListener("keydown",e=>{if(e.key==="Enter"){["todo","doing","done"].forEach(c=>{const f=document.getElementById("form-"+c);if(f.classList.contains("open"))addCard(c);})}});
+render();
+</script></body></html>'></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Drag & Drop API</span><span class="tech-pill">State Management</span><span class="tech-pill">localStorage</span><span class="tech-pill">Vanilla JS</span></div>
+        <div class="project-name">Drag-and-Drop Kanban Board</div>
+        <p class="project-desc">A Trello-style task board. Drag cards between To Do, In Progress, and Done columns. Add new cards with tags, delete cards, and watch counts update. Built with the native HTML Drag and Drop API.</p>
+      </div>
+    </div>
+
+    <!-- ── 5. MARKDOWN EDITOR ── -->
+    <div class="we project-card reveal">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 markdown.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="Markdown Editor" srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:monospace;background:#0a0a0e;color:#ccc;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.toolbar{background:#111118;border-bottom:1px solid #1e1e2e;padding:6px 12px;display:flex;gap:4px;align-items:center;flex-shrink:0}
+.tb-btn{padding:4px 10px;background:transparent;border:1px solid #1e1e2e;color:#666;font-family:monospace;font-size:11px;cursor:pointer;border-radius:3px;transition:all .15s}
+.tb-btn:hover{background:#1e1e2e;color:#9b8dff}
+.sep{width:1px;height:18px;background:#1e1e2e;margin:0 4px}
+.word-count{margin-left:auto;font-size:10px;color:#444;letter-spacing:.06em}
+.panes{flex:1;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.editor-wrap{border-right:1px solid #1e1e2e;display:flex;flex-direction:column;overflow:hidden}
+.preview-wrap{display:flex;flex-direction:column;overflow:hidden}
+.pane-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#333;padding:5px 12px;background:#0d0d12;border-bottom:1px solid #1a1a22;flex-shrink:0}
+#editor{flex:1;background:#0a0a0e;border:none;outline:none;color:#c8c4e8;font-family:monospace;font-size:13px;line-height:1.8;padding:14px;resize:none;tab-size:2;overflow-y:auto}
+#preview{flex:1;padding:14px;overflow-y:auto;font-family:system-ui,sans-serif;font-size:13px;line-height:1.8;color:#d0cce8;background:#0a0a0e}
+#preview h1,#preview h2,#preview h3{color:#f0eeff;font-family:system-ui;margin:16px 0 8px;line-height:1.2}
+#preview h1{font-size:22px;border-bottom:1px solid #1e1e2e;padding-bottom:8px}
+#preview h2{font-size:18px}
+#preview h3{font-size:15px;color:#9b8dff}
+#preview p{margin-bottom:10px}
+#preview strong{color:#f0eeff}
+#preview em{color:#9b8dff;font-style:italic}
+#preview code{background:#1a1a24;border:1px solid #2a2a38;padding:1px 6px;border-radius:3px;font-family:monospace;font-size:11px;color:#ff8c42}
+#preview pre{background:#0e0e16;border:1px solid #1e1e2e;border-left:3px solid #7c6bff;padding:12px;border-radius:0 6px 6px 0;margin:12px 0;overflow-x:auto}
+#preview pre code{background:none;border:none;padding:0;color:#c8c4e8;font-size:12px}
+#preview blockquote{border-left:3px solid #7c6bff;padding-left:14px;color:#888;margin:10px 0;font-style:italic}
+#preview ul,#preview ol{padding-left:20px;margin-bottom:10px}
+#preview li{margin-bottom:4px}
+#preview a{color:#7c6bff}
+#preview a:hover{text-decoration:underline}
+#preview hr{border:none;border-top:1px solid #1e1e2e;margin:16px 0}
+#preview table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+#preview th{background:#1a1a24;color:#9b8dff;padding:6px 10px;text-align:left;border:1px solid #2a2a38}
+#preview td{padding:6px 10px;border:1px solid #1e1e2e}
+#preview tr:nth-child(even) td{background:#0d0d14}
+</style></head><body>
+<div class="toolbar">
+  <button class="tb-btn" onclick="wrap(&apos;**&apos;,&apos;**&apos;)"><b>B</b></button>
+  <button class="tb-btn" onclick="wrap(&apos;*&apos;,&apos;*&apos;)"><i>I</i></button>
+  <button class="tb-btn" onclick="wrap(&apos;`&apos;,&apos;`&apos;)">Code</button>
+  <button class="tb-btn" onclick="insert(&apos;## &apos;)">H2</button>
+  <button class="tb-btn" onclick="insert(&apos;### &apos;)">H3</button>
+  <div class="sep"></div>
+  <button class="tb-btn" onclick="insert(&apos;- &apos;)">List</button>
+  <button class="tb-btn" onclick="insert(&apos;> &apos;)">Quote</button>
+  <button class="tb-btn" onclick="insert(&apos;[text](url)&apos;)">Link</button>
+  <button class="tb-btn" onclick="insert(&apos;---\n&apos;)">HR</button>
+  <div class="sep"></div>
+  <button class="tb-btn" onclick="copy()">Copy MD</button>
+  <span class="word-count" id="wc">0 words</span>
+</div>
+<div class="panes">
+  <div class="editor-wrap">
+    <div class="pane-label">Markdown Source</div>
+    <textarea id="editor" oninput="render();countWords()" spellcheck="false"># Welcome to Markdown Editor
+
+A **live preview** markdown editor with syntax support.
+
+## Features
+
+- *Italic* and **bold** text
+- `inline code` and code blocks
+- Blockquotes and horizontal rules
+- Tables and links
+
+### Code Block
+
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+### Blockquote
+
+> "First, solve the problem. Then, write the code."  
+> — John Johnson
+
+### Table
+
+| Feature | Status |
+|---------|--------|
+| Bold/Italic | ✅ Done |
+| Code blocks | ✅ Done |
+| Tables | ✅ Done |
+
+---
+
+[Visit GitHub](https://github.com)</textarea>
+  </div>
+  <div class="preview-wrap">
+    <div class="pane-label">Preview</div>
+    <div id="preview"></div>
+  </div>
+</div>
+<script>
+const ed=document.getElementById("editor");
+function render(){
+  let t=ed.value;
+  // code blocks first
+  t=t.replace(/```(\w*)\n([\s\S]*?)```/gm,(_,lang,code)=>`<pre><code>${esc(code.trim())}</code></pre>`);
+  t=t.replace(/^#{1} (.+)$/gm,"<h1>$1</h1>");
+  t=t.replace(/^#{2} (.+)$/gm,"<h2>$1</h2>");
+  t=t.replace(/^#{3} (.+)$/gm,"<h3>$1</h3>");
+  t=t.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+  t=t.replace(/\*(.+?)\*/g,"<em>$1</em>");
+  t=t.replace(/`(.+?)`/g,"<code>$1</code>");
+  t=t.replace(/\[(.+?)\]\((.+?)\)/g,"<a href='$2' target='_blank'>$1</a>");
+  t=t.replace(/^> (.+)$/gm,"<blockquote>$1</blockquote>");
+  t=t.replace(/^---$/gm,"<hr>");
+  // tables
+  t=t.replace(/^\|(.+)\|\s*\n\|[-| :]+\|\s*\n((?:\|.+\|\s*\n?)*)/gm,(m,header,rows)=>{
+    const ths=header.split("|").map(s=>s.trim()).filter(Boolean).map(s=>`<th>${s}</th>`).join("");
+    const trs=rows.trim().split("\n").map(r=>{
+      const tds=r.split("|").map(s=>s.trim()).filter(Boolean).map(s=>`<td>${s}</td>`).join("");
+      return `<tr>${tds}</tr>`;
+    }).join("");
+    return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+  });
+  // lists
+  t=t.replace(/((?:^- .+\n?)+)/gm,match=>"<ul>"+match.replace(/^- (.+)$/gm,"<li>$1</li>")+"</ul>");
+  t=t.replace(/((?:^\d+\. .+\n?)+)/gm,match=>"<ol>"+match.replace(/^\d+\. (.+)$/gm,"<li>$1</li>")+"</ol>");
+  t=t.replace(/\n\n/g,"</p><p>").replace(/^(?!<[houblp])/gm,"");
+  document.getElementById("preview").innerHTML=t;
+}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function wrap(a,b){
+  const s=ed.selectionStart,e=ed.selectionEnd;
+  const sel=ed.value.substring(s,e)||"text";
+  ed.value=ed.value.substring(0,s)+a+sel+b+ed.value.substring(e);
+  render();
+}
+function insert(txt){
+  const s=ed.selectionStart;
+  const before=ed.value.substring(0,s);
+  const lineStart=before.lastIndexOf("\n")+1;
+  ed.value=ed.value.substring(0,lineStart)+txt+ed.value.substring(lineStart);
+  ed.focus();render();
+}
+function countWords(){
+  const w=ed.value.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById("wc").textContent=w+" word"+(w===1?"":"s");
+}
+function copy(){navigator.clipboard.writeText(ed.value).then(()=>{const b=document.querySelector(".tb-btn:last-of-type");b.textContent="Copied!";setTimeout(()=>b.textContent="Copy MD",1500)});}
+render();countWords();
+</script></body></html>'></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Regex Parsing</span><span class="tech-pill">Clipboard API</span><span class="tech-pill">Real-time</span><span class="tech-pill">Toolbar</span></div>
+        <div class="project-name">Markdown Editor & Previewer</div>
+        <p class="project-desc">Split-pane markdown editor with live HTML preview. Supports headings, bold, italic, code blocks, tables, blockquotes, and links. Toolbar buttons, word counter, and one-click copy to clipboard.</p>
+      </div>
+    </div>
+
+    <!-- ── 6. COLOUR PALETTE GENERATOR ── -->
+    <div class=" we project-card reveal reveal-delay-1">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 palette.alexdev.io</div>
+      </div>
+      <iframe class="project-iframe" title="Colour Palette Generator" srcdoc='<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#09090e;color:#ddd8f0;min-height:100vh;padding:20px;display:flex;flex-direction:column;gap:16px}
+h2{font-family:monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#555}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+select,input[type=text]{background:#111118;border:1px solid #1e1e2e;color:#e0ddf5;font-family:monospace;font-size:12px;padding:8px 12px;border-radius:6px;outline:none}
+select:focus,input[type=text]:focus{border-color:#7c6bff}
+.btn{padding:8px 18px;background:#7c6bff;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:monospace;transition:all .2s}
+.btn:hover{background:#9b8dff}
+.btn.outline{background:transparent;border:1px solid #2a2a38;color:#888}
+.btn.outline:hover{border-color:#7c6bff;color:#9b8dff}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;flex:1}
+.swatch{border-radius:8px;display:flex;flex-direction:column;justify-content:flex-end;padding:10px;cursor:pointer;position:relative;min-height:80px;transition:transform .15s}
+.swatch:hover{transform:scale(1.03)}
+.swatch-hex{font-family:monospace;font-size:11px;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.5);user-select:none}
+.swatch-name{font-size:9px;margin-top:2px;text-shadow:0 1px 4px rgba(0,0,0,.5);opacity:.7}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:#3dffa0;color:#0a0a0e;padding:8px 18px;border-radius:6px;font-family:monospace;font-size:12px;font-weight:700;opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.saved-row{display:flex;gap:8px;flex-wrap:wrap;min-height:30px}
+.saved-swatch{width:28px;height:28px;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:border-color .15s}
+.saved-swatch:hover{border-color:#fff}
+.css-box{background:#0d0d14;border:1px solid #1e1e2e;border-radius:6px;padding:12px;font-family:monospace;font-size:11px;color:#888;line-height:1.8;max-height:80px;overflow-y:auto}
+.css-var{color:#7c6bff}.css-val{color:#3dffa0}
+</style></head><body>
+<h2>Colour Palette Generator</h2>
+<div class="controls">
+  <input type="text" id="base" placeholder="Base hex e.g. #7c6bff" value="#7c6bff" maxlength="7"/>
+  <select id="mode">
+    <option value="analogous">Analogous</option>
+    <option value="complementary">Complementary</option>
+    <option value="triadic">Triadic</option>
+    <option value="split">Split-Complementary</option>
+    <option value="tetradic">Tetradic</option>
+    <option value="mono">Monochromatic</option>
+  </select>
+  <button class="btn" onclick="generate()">Generate</button>
+  <button class="btn outline" onclick="random()">Random Base</button>
+</div>
+<div class="palette" id="palette"></div>
+<div style="display:flex;gap:16px;align-items:flex-start">
+  <div style="flex:1"><h2 style="margin-bottom:8px">Saved</h2><div class="saved-row" id="saved"></div></div>
+  <div style="flex:2"><h2 style="margin-bottom:8px">CSS Variables</h2><div class="css-box" id="css-box">Generate a palette to see the CSS.</div></div>
+</div>
+<div class="toast" id="toast">Hex copied!</div>
+<script>
+function hexToHsl(hex){
+  let r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
+  const max=Math.max(r,g,b),min=Math.min(r,g,b);
+  let h,s,l=(max+min)/2;
+  if(max===min){h=s=0;}else{const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;}h/=6;}
+  return[h*360,s*100,l*100];
+}
+function hslToHex(h,s,l){
+  s/=100;l/=100;
+  const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));
+  return "#"+[0,8,4].map(n=>Math.round(f(n)*255).toString(16).padStart(2,"0")).join("");
+}
+const colorNames={};
+function nameGuess(hex){
+  const names={"#ff0000":"Red","#00ff00":"Green","#0000ff":"Blue","#ffff00":"Yellow","#ff00ff":"Magenta","#00ffff":"Cyan","#ffffff":"White","#000000":"Black","#ff8c00":"Dark Orange","#7c6bff":"Periwinkle","#3dffa0":"Mint"};
+  return names[hex.toLowerCase()]||"";
+}
+function generate(){
+  const hex=document.getElementById("base").value.trim();
+  if(!/^#[0-9a-fA-F]{6}$/.test(hex)){alert("Enter a valid 6-digit hex like #7c6bff");return;}
+  const [h,s,l]=hexToHsl(hex);
+  const mode=document.getElementById("mode").value;
+  let hues;
+  if(mode==="analogous") hues=[h-40,h-20,h,h+20,h+40];
+  else if(mode==="complementary") hues=[h,h+30,h+150,h+180,h+210];
+  else if(mode==="triadic") hues=[h,h+15,h+120,h+135,h+240];
+  else if(mode==="split") hues=[h,h+150,h+160,h+200,h+210];
+  else if(mode==="tetradic") hues=[h,h+30,h+90,h+120,h+180];
+  else hues=[h,h,h,h,h]; // mono
+  const lightness=mode==="mono"?[20,35,50,65,80]:[l,l,l,l,l];
+  const saturation=mode==="mono"?[s,s,s,s,s]:[s,s,s,s,s];
+  const colors=hues.map((hh,i)=>hslToHex(((hh%360)+360)%360,saturation[i],lightness[i]));
+  const pal=document.getElementById("palette");
+  pal.innerHTML=colors.map((c,i)=>{
+    const brightness=parseInt(c.slice(1,3),16)*0.299+parseInt(c.slice(3,5),16)*0.587+parseInt(c.slice(5,7),16)*0.114;
+    const fg=brightness>128?"#111":"#fff";
+    return `<div class="swatch" style="background:${c}" onclick="copy(&apos;${c}&apos;,this)"><span class="swatch-hex" style="color:${fg}">${c.toUpperCase()}</span><span class="swatch-name" style="color:${fg}">Color ${i+1}</span></div>`;
+  }).join("");
+  document.getElementById("css-box").innerHTML=colors.map((c,i)=>`<span class="css-var">--color-${i+1}</span>: <span class="css-val">${c.toUpperCase()}</span>;`).join("<br>");
+}
+function copy(hex,el){
+  navigator.clipboard.writeText(hex).catch(()=>{});
+  const t=document.getElementById("toast");
+  t.textContent=hex+" copied!";
+  t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800);
+  const saved=document.getElementById("saved");
+  if(!document.querySelector(`.saved-swatch[data-hex="${hex}"]`)){
+    const d=document.createElement("div");
+    d.className="saved-swatch";d.style.background=hex;d.title=hex;d.dataset.hex=hex;
+    d.onclick=()=>copy(hex,d);
+    saved.appendChild(d);
+  }
+}
+function random(){
+  const h=Math.floor(Math.random()*360);
+  const s=40+Math.floor(Math.random()*40);
+  const l=35+Math.floor(Math.random()*30);
+  document.getElementById("base").value=hslToHex(h,s,l);
+  generate();
+}
+generate();
+</script></body></html>'></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Colour Theory</span><span class="tech-pill">HSL Math</span><span class="tech-pill">Clipboard API</span><span class="tech-pill">CSS Gen</span></div>
+        <div class="project-name">Colour Palette Generator</div>
+        <p class="project-desc">Enter any base hex colour and pick a harmony mode — Analogous, Complementary, Triadic, Tetradic, or Monochromatic. Generates a 5-swatch palette with CSS variable output. Click any swatch to copy its hex.</p>
+      </div>
+    </div>
+    <!-- EKO Atlantic residences -->
+    <div class=" we project-card reveal reveal-delay-2">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 eko-atlantic.listings</div>
+      </div>
+      <iframe class="project-iframe" title="Eko Atlantic Listings" src="projects/eko-atlantic-listings.html"></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Real Estate</span><span class="tech-pill">Filters</span><span class="tech-pill">Modal UI</span><span class="tech-pill">localStorage</span></div>
+        <div class="project-name">Eko Atlantic Listings</div>
+        <p class="project-desc">A real estate listings UI with search + filtering, favorites, and a quick schedule-viewing flow. Includes a detail modal and copy-to-clipboard summary.</p>
+      </div>
+    </div>
+     <!-- Mortgage calculator -->
+    <div class="we project-card reveal reveal-delay-3">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 mortgage.tools</div>
+      </div>
+      <iframe class="project-iframe" title="Mortgage & Affordability Calculator" src="projects/mortgage-affordability.html"></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Real Estate</span><span class="tech-pill">Amortization</span><span class="tech-pill">Finance Math</span><span class="tech-pill">Vanilla JS</span></div>
+        <div class="project-name">Mortgage & Affordability</div>
+        <p class="project-desc">An offline mortgage calculator that breaks down principal/interest/taxes/insurance, estimates affordability ratio, and renders a 12‑month amortization table.</p>
+      </div>
+    </div>
+     <!-- Property Management  -->
+    <div class="we project-card reveal">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒 ops-dashboard.properties</div>
+      </div>
+      <iframe class="project-iframe" title="Property Management Dashboard" src="projects/property-management-dashboard.html"></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Real Estate</span><span class="tech-pill">Dashboard</span><span class="tech-pill">CRUD</span><span class="tech-pill">localStorage</span></div>
+        <div class="project-name">Property Management Dashboard</div>
+        <p class="project-desc"> Mini operations dashboard with occupancy and rent KPIs plus a maintenance ticket workflow (add, filter, update status, delete) persisted locally.</p>
+      </div>
+    </div>
+       <!-- Enhome -->
+    <div class=" we project-card reveal reveal-delay-2">
+      <div class="iframe-chrome">
+        <div class="chrome-dots"><div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div></div>
+        <div class="chrome-url">🔒ENHome</div>
+      </div>
+      <iframe class="project-iframe" title="Eko Atlantic Listings" src="projects/first.html"></iframe>
+      <div class="project-footer">
+        <div class="project-tech"><span class="tech-pill">Real Estate</span><span class="tech-pill">Filters</span><span class="tech-pill">Modal UI</span><span class="tech-pill">localStorage</span></div>
+        <div class="project-name">ENHome</div>
+        <p class="project-desc">A real estate listings UI with search + filtering, favorites, and a quick schedule-viewing flow. Includes a detail modal and copy-to-clipboard summary.</p>
+      </div>
+    </div>
+
+  </div><!-- /projects-grid -->
+</section>
+
+<!-- ════════════ SKILLS ════════════ -->
+<div style="we border-top:1px solid var(--border)">
+<section class="section" id="skills">
+  <div class="s-label">Technical Stack</div>
+  <h2 class="s-title">Skills & Tools</h2>
+  <p class="s-sub">Technologies I use to ship production-grade web applications.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript / TypeScript</div><div class="skill-tags"><span class="skill-tag">ES2024</span><span class="skill-tag">async</span><span class="skill-tag">modules</span></div><div class="skill-bar"><div class="skill-fill" data-w="95"></div></div></div>
+    <div class="skill-card reveal reveal-delay-1"><div class="skill-icon">⚛️</div><div class="skill-name">React / Next.js</div><div class="skill-tags"><span class="skill-tag">App Router</span><span class="skill-tag">RSC</span><span class="skill-tag">Hooks</span></div><div class="skill-bar"><div class="skill-fill" data-w="92"></div></div></div>
+    <div class="skill-card reveal reveal-delay-2"><div class="skill-icon">🎨</div><div class="skill-name">CSS / Tailwind</div><div class="skill-tags"><span class="skill-tag">Grid</span><span class="skill-tag">Animations</span><span class="skill-tag">Tokens</span></div><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div></div>
+    <div class="skill-card reveal reveal-delay-3"><div class="skill-icon">🟢</div><div class="skill-name">Node.js / Express</div><div class="skill-tags"><span class="skill-tag">REST</span><span class="skill-tag">Auth</span><span class="skill-tag">Middleware</span></div><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+    <div class="skill-card reveal"><div class="skill-icon">🗄️</div><div class="skill-name">PostgreSQL / MongoDB</div><div class="skill-tags"><span class="skill-tag">Schema</span><span class="skill-tag">Queries</span><span class="skill-tag">ORM</span></div><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div>
+    <div class="skill-card reveal reveal-delay-1"><div class="skill-icon">🧪</div><div class="skill-name">Testing</div><div class="skill-tags"><span class="skill-tag">Jest</span><span class="skill-tag">Cypress</span><span class="skill-tag">Vitest</span></div><div class="skill-bar"><div class="skill-fill" data-w="78"></div></div></div>
+    <div class="skill-card reveal reveal-delay-2"><div class="skill-icon">🚀</div><div class="skill-name">DevOps / Deploy</div><div class="skill-tags"><span class="skill-tag">Vercel</span><span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span></div><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div></div>
+    <div class="skill-card reveal reveal-delay-3"><div class="skill-icon">🛠️</div><div class="skill-name">Tools</div><div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">Figma</span><span class="skill-tag">VS Code</span></div><div class="skill-bar"><div class="skill-fill" data-w="88"></div></div></div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════ ABOUT ════════════ -->
+<div style="border-top:1px solid var(--border)">
+<section class="section" id="about">
+  <div class="s-label">Background</div>
+  <h2 class="s-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I'm <strong>ZEnum</strong>, a full-stack web developer. I've spent the last five years turning design files and product requirements into fast, accessible, production-ready applications.</p>
+      <p>My philosophy: <strong>the web should be fast, beautiful, and work for everyone</strong>. I obsess over performance budgets, Core Web Vitals, and the tiny details that separate a good product from a great one.</p>
+      <p>I've worked across the full stack — from pixel-perfect React UIs to PostgreSQL schemas and Node.js APIs — and I'm comfortable owning a feature from Figma to deployment.</p>
+      <p>Currently <strong>open to remote freelance projects</strong> and full-time opportunities.</p>
+    </div>
+    <div class="reveal">
+      <ul class="timeline">
+        <li class="tl"><span class="tl-y">2024</span><div><div class="tl-title">Senior Frontend Engineer</div><div class="tl-co">Fintech Startup · Remote</div><div class="tl-desc">Led a full UI rebuild. Improved Lighthouse scores from 48 → 97 and cut bundle size by 55%.</div></div></li>
+        <li class="tl"><span class="tl-y">2022</span><div><div class="tl-title">Full-Stack Developer</div><div class="tl-co">Rithitech</div><div class="tl-desc">Built multi-tenant platform with React + Node. Served 50k+ active users at peak.</div></div></li>
+        <li class="tl"><span class="tl-y">2020</span><div><div class="tl-title">Freelance Web Developer</div><div class="tl-co">Self-employed</div><div class="tl-desc">Delivered 20+ projects — e-commerce, dashboards, landing pages — for clients across Africa and Europe.</div></div></li>
+ 
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ════════════ CONTACT ════════════ -->
+<div id="contact-wrap">
+  <div class="contact-grid">
+    <div>
+      <div class="s-label">Get In Touch</div>
+      <h2 class="s-title">Let's Build<br>Something Great</h2>
+      <p class="contact-desc">Have a project in mind, or just want to say hello? Fill in the form and I'll get back to you within 24 hours.</p>
+      <div class="contact-info-item"><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:zenum@zenum.io">zenum74118@gmail.com</a></div></div>
+      <div class="contact-info-item"><div class="ci-label">Location</div><div class="ci-val">Amsterdam, Neatherlands — Remote-friendly</div></div>
+      <div class="contact-info-item"><div class="ci-label">Availability</div><div class="ci-val" style="color:var(--green);display:flex;align-items:center;gap:8px"><span class="badge-dot"></span>Open to work</div></div>
+      <div class="socials">
+        <a href="#" class="social" title="GitHub">GH</a>
+        <a href="#" class="social" title="LinkedIn">in</a>
+        <a href="#" class="social" title="Twitter/X">𝕏</a>
+        <a href="#" class="social" title="CodePen">CP</a>
+      </div>
+    </div>
+    <div>
+      <div class="form">
+        <div class="form-row">
+          <div class="fg"><label class="fl">First Name</label><input class="fi" id="fn" placeholder="John"/></div>
+          <div class="fg"><label class="fl">Last Name</label><input class="fi" id="ln" placeholder="Doe"/></div>
+        </div>
+        <div class="fg"><label class="fl">Email Address</label><input class="fi" id="em" type="email" placeholder="zenum74118@gmail.com"/></div>
+        <div class="fg"><label class="fl">Subject</label>
+          <select class="fi" id="subj" style="cursor:pointer">
+            <option value="">Select a topic…</option>
+            <option>Freelance project</option>
+            <option>Full-time role</option>
+            <option>Collaboration</option>
+            <option>Just saying hello</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Message</label><textarea class="ft" id="msg" placeholder="Tell me about your project, timeline, and budget…"></textarea></div>
+        <button class="f-submit" onclick="send()">Send Message →</button>
+        <div id="f-msg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 Alex Reyes — Amsterdam, Neatherlands</span>
+  <span style="color:var(--accent)">ZEnum</span>
+  <span>Built with HTML · CSS · JavaScript</span>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById("cur"),ring=document.getElementById("cur-ring");
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY});
+(function tick(){cur.style.left=mx+"px";cur.style.top=my+"px";rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(tick)})();
+document.querySelectorAll("a,button,.project-link,.nav-cta,.project-card").forEach(el=>{
+  el.addEventListener("mouseenter",()=>{ring.style.width="48px";ring.style.height="48px";cur.style.transform="translate(-50%,-50%) scale(1.5)"});
+  el.addEventListener("mouseleave",()=>{ring.style.width="32px";ring.style.height="32px";cur.style.transform="translate(-50%,-50%) scale(1)"});
+});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+function openProject(card){
+  const iframe=card.querySelector("iframe");
+  if(!iframe) return;
+  const src=iframe.getAttribute("src");
+  if(src){
+    const w=window.open(src,"_blank");
+    if(w) w.opener=null;
+    return;
+  }
+  const srcdoc=iframe.getAttribute("srcdoc");
+  if(!srcdoc) return;
+  const w=window.open("about:blank","_blank");
+  if(!w) return;
+  w.opener=null;
+  w.document.open();
+  w.document.write(srcdoc);
+  w.document.close();
+}
+
+document.querySelectorAll(".project-card").forEach(card=>{
+  const iframe=card.querySelector("iframe");
+  if(!iframe) return;
+  card.classList.add("has-pop");
+  card.tabIndex=0;
+  card.setAttribute("role","button");
+  card.addEventListener("click",e=>{
+    if(e.target.closest("a,button,input,select,textarea,label")) return;
+    openProject(card);
+  });
+  card.addEventListener("keydown",e=>{
+    if(e.key!=="Enter"&&e.key!==" ") return;
+    e.preventDefault();
+    openProject(card);
+  });
+});
+
+/* ── SKILL BARS ── */
+const sio=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+"%";sio.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll(".skill-fill").forEach(el=>sio.observe(el));
+
+/* ── CONTACT FORM ── */
+
+async function send() {
+  const fn = document.getElementById("fn").value.trim();
+  const em = document.getElementById("em").value.trim();
+  const msg = document.getElementById("msg").value.trim();
+  const out = document.getElementById("f-msg");
+
+  if (!fn || !em || !msg) {
+    out.className = "err"; out.style.display = "block";
+    out.textContent = "⚠ Please fill in your name, email and message.";
+    return;
+  }
+
+  const res = await fetch("https://formspree.io/f/mbdeogqv", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify({ name: fn, email: em, message: msg })
+  });
+
+  if (res.ok) {
+    out.className = "ok"; out.style.display = "block";
+    out.textContent = "✓ Message sent! I'll reply within 24 hours.";
+    ["fn","ln","em","msg"].forEach(id => document.getElementById(id).value = "");
+  } else {
+    out.className = "err"; out.style.display = "block";
+    out.textContent = "⚠ Something went wrong. Try emailing directly.";
+  }
+}
+</script>
+</body>
+</html>
