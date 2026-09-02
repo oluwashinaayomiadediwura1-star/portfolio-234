@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Eko Atlantic Listings</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0b0f17;
+      --panel:#0f1624;
+      --panel2:#121c2d;
+      --border:rgba(255,255,255,.10);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.62);
+      --accent:#7c6bff;
+      --green:#3dffa0;
+      --orange:#ff8c42;
+      --red:#ff4d6d;
+      --radius:14px;
+    }
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:
+        radial-gradient(800px 420px at 15% 20%, rgba(124,107,255,.20), transparent 60%),
+        radial-gradient(900px 520px at 85% 70%, rgba(61,255,160,.14), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      padding:18px;
+    }
+    .shell{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+    .hero{
+      height:150px;
+      border:1px solid var(--border);
+      background:rgba(15,22,36,.80);
+      border-radius:var(--radius);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,15,23,.86), rgba(11,15,23,.25) 55%, rgba(11,15,23,.10))}
+    .hero .hero-copy{position:absolute;left:16px;bottom:14px;right:16px;z-index:1;display:flex;flex-direction:column;gap:6px}
+    .hero .hero-copy strong{font-size:14px;letter-spacing:-.02em}
+    .hero .hero-copy span{font-size:12px;color:rgba(238,242,255,.72);line-height:1.55;max-width:560px}
+    .top{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      background:rgba(15,22,36,.80);
+      backdrop-filter:blur(14px);
+      border-radius:var(--radius);
+    }
+    .title{display:flex;flex-direction:column;gap:6px;min-width:220px}
+    h1{font-size:16px;letter-spacing:-.02em}
+    .sub{font-size:12px;color:var(--muted);line-height:1.55;max-width:520px}
+    .pill-row{display:flex;gap:6px;flex-wrap:wrap}
+    .pill{font-size:10px;padding:4px 10px;border-radius:99px;border:1px solid var(--border);color:var(--muted)}
+    .pill strong{color:var(--text);font-weight:600}
+    .filters{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .control{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width:150px;
+    }
+    label{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    input,select{
+      width:100%;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:9px 10px;
+      color:var(--text);
+      outline:none;
+      font-size:12px;
+    }
+    input:focus,select:focus{border-color:rgba(124,107,255,.7)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .card{
+      border:1px solid var(--border);
+      background:rgba(15,22,36,.78);
+      backdrop-filter:blur(10px);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:148px;
+      transition:transform .15s,border-color .15s;
+      cursor:pointer;
+    }
+    .card:hover{transform:translateY(-2px);border-color:rgba(124,107,255,.7)}
+    .thumb{
+      height:92px;
+      background:rgba(255,255,255,.04);
+      position:relative;
+    }
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05);z-index:0}
+    .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));pointer-events:none;z-index:1}
+    .badge{
+      position:absolute;
+      top:10px;
+      left:10px;
+      z-index:2;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:10px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      color:rgba(255,255,255,.85);
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .badge::before{content:"";width:7px;height:7px;border-radius:50%}
+    .b-sale::before{background:var(--green);box-shadow:0 0 12px rgba(61,255,160,.6)}
+    .b-rent::before{background:var(--orange);box-shadow:0 0 12px rgba(255,140,66,.55)}
+    .fav{
+      position:absolute;
+      top:10px;
+      right:10px;
+      z-index:2;
+      width:30px;height:30px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.22);
+      color:rgba(255,255,255,.85);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:transform .12s,background .12s;
+    }
+    .fav:hover{transform:scale(1.04)}
+    .fav.on{background:rgba(255,77,109,.18);border-color:rgba(255,77,109,.35);color:var(--red)}
+    .meta{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+    .price{font-weight:800;letter-spacing:-.02em}
+    .name{font-size:12px;color:rgba(238,242,255,.9);font-weight:650}
+    .mini{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+    .mini span{display:inline-flex;align-items:center;gap:6px}
+    .mini span::before{content:"";width:4px;height:4px;border-radius:50%;background:rgba(238,242,255,.35)}
+    .empty{
+      border:1px dashed rgba(255,255,255,.20);
+      border-radius:16px;
+      padding:22px;
+      text-align:center;
+      color:var(--muted);
+      background:rgba(15,22,36,.55);
+    }
+    .drawer{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      padding:18px;
+      background:rgba(0,0,0,.62);
+    }
+    .drawer.open{display:grid}
+    .modal{
+      width:min(720px,100%);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      overflow:hidden;
+      background:rgba(15,22,36,.92);
+      backdrop-filter:blur(16px);
+      box-shadow:0 30px 90px rgba(0,0,0,.55);
+    }
+    .m-top{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.10);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .m-title{display:flex;flex-direction:column;gap:4px}
+    .m-title strong{font-size:14px;letter-spacing:-.02em}
+    .m-title span{font-size:12px;color:var(--muted)}
+    .x{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:8px 10px;
+      color:var(--text);
+      cursor:pointer;
+      font-size:12px;
+    }
+    .m-body{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;padding:14px 16px}
+    .m-media{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      overflow:hidden;
+      height:170px;
+    }
+    .m-media img{width:100%;height:100%;object-fit:cover;display:block}
+    .kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .kpi{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.05);border-radius:14px;padding:10px 12px}
+    .kpi .k{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .kpi .v{margin-top:6px;font-size:14px;font-weight:800}
+    .desc{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);border-radius:14px;padding:10px 12px;color:var(--muted);font-size:12px;line-height:1.65}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:12px;
+      letter-spacing:.02em;
+      flex:1;
+    }
+    .btn.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(238,242,255,.9);flex:1}
+    .note{font-size:10px;color:rgba(238,242,255,.45);margin-top:10px}
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:14px;
+      transform:translateX(-50%) translateY(12px);
+      opacity:0;
+      pointer-events:none;
+      background:rgba(61,255,160,.16);
+      border:1px solid rgba(61,255,160,.32);
+      color:rgba(238,242,255,.92);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      transition:opacity .18s,transform .18s;
+      backdrop-filter:blur(10px);
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media (max-width:860px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .m-body{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      .grid{grid-template-columns:1fr}
+      .control{min-width:140px}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="hero">
+      <img alt="Eko Atlantic skyline" src="img/eko_waterfront_hero.png" />
+      <div class="hero-copy">
+        <strong>Premium Waterfront Listings</strong>
+        <span>Explore Eko Atlantic, Victoria Island, Ikoyi and Lekki. View photos, filter by type, and open each listing for full details.</span>
+      </div>
+    </div>
+    <div class="top">
+      <div class="title">
+        <h1>Eko Atlantic Residences</h1>
+        <div class="sub">Interactive property listings with filters, favorites, and a quick “schedule viewing” flow. Built as a single-file UI using vanilla JS.</div>
+        <div class="pill-row">
+          <span class="pill"><strong>Data:</strong> curated sample</span>
+          <span class="pill"><strong>Features:</strong> filters · modal · localStorage</span>
+        </div>
+      </div>
+      <div class="filters">
+        <div class="control">
+          <label for="q">Search</label>
+          <input id="q" placeholder="Penthouse, Ikoyi…" autocomplete="off" />
+        </div>
+        <div class="control">
+          <label for="loc">Location</label>
+          <select id="loc"></select>
+        </div>
+        <div class="control">
+          <label for="type">Type</label>
+          <select id="type"></select>
+        </div>
+        <div class="control">
+          <label for="max">Max Price</label>
+          <select id="max"></select>
+        </div>
+      </div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty" style="display:none">No matches. Try clearing filters.</div>
+  </div>
+
+  <div id="drawer" class="drawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="m-top">
+        <div class="m-title">
+          <strong id="m-name">—</strong>
+          <span id="m-sub">—</span>
+        </div>
+        <button class="x" id="close">Close</button>
+      </div>
+      <div class="m-body">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="m-media"><img id="m-img" alt="Property photo" src="" /></div>
+          <div class="kpis">
+            <div class="kpi"><div class="k">Price</div><div class="v" id="m-price">—</div></div>
+            <div class="kpi"><div class="k">Size</div><div class="v" id="m-size">—</div></div>
+            <div class="kpi"><div class="k">Beds</div><div class="v" id="m-beds">—</div></div>
+            <div class="kpi"><div class="k">Status</div><div class="v" id="m-status">—</div></div>
+          </div>
+          <div class="desc" id="m-desc">—</div>
+        </div>
+        <div>
+          <div class="desc" style="margin-bottom:10px">
+            Estimated upfront cost (demo): 20% deposit + ₦250k legal/admin.
+            <div style="margin-top:10px;font-weight:800;color:rgba(238,242,255,.92)" id="m-upfront">—</div>
+          </div>
+          <div class="actions">
+            <button class="btn" id="book">Schedule Viewing</button>
+            <button class="btn secondary" id="copy">Copy Summary</button>
+          </div>
+          <div class="note">This is a portfolio UI. Data and pricing are for demonstration only.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const listings = [
+      { id: "EA-101", name: "Atlantic View 2BR Apartment", location: "Eko Atlantic", type: "Apartment", price: 180000000, beds: 2, size: 118, status: "For Sale", img: "img/eko_apartment_exterior.png", desc: "Ocean-facing unit with concierge lobby, gym access, and dedicated parking." },
+      { id: "EA-109", name: "Marina Pointe 3BR Apartment", location: "Eko Atlantic", type: "Apartment", price: 260000000, beds: 3, size: 172, status: "For Sale", img: "img/eko_apartment_interior.png", desc: "Corner apartment with wrap-around balcony and premium finishing." },
+      { id: "VI-208", name: "Victoria Island 1BR Serviced", location: "Victoria Island", type: "Serviced", price: 9500000, beds: 1, size: 54, status: "For Rent / yr", img: "img/eko_apartment_interior.png", desc: "Fully furnished serviced apartment with backup power and security." },
+      { id: "IK-312", name: "Ikoyi 4BR Terrace House", location: "Ikoyi", type: "Terrace", price: 320000000, beds: 4, size: 245, status: "For Sale", img: "img/eko_terrace_exterior.png", desc: "Quiet street, private courtyard, and high-ceiling living area." },
+      { id: "IK-401", name: "Banana Island 5BR Penthouse", location: "Ikoyi", type: "Penthouse", price: 850000000, beds: 5, size: 410, status: "For Sale", img: "img/eko_penthouse_pool.png", desc: "Top-floor penthouse with skyline views, pool deck, and private elevator access." },
+      { id: "LK-512", name: "Lekki Phase 1 3BR Duplex", location: "Lekki Phase 1", type: "Duplex", price: 120000000, beds: 3, size: 198, status: "For Sale", img: "img/eko_terrace_exterior.png", desc: "Family-friendly duplex with study, pantry, and smart-home prewire." },
+      { id: "LK-607", name: "Lekki 2BR Apartment", location: "Lekki Phase 1", type: "Apartment", price: 65000000, beds: 2, size: 95, status: "For Sale", img: "img/eko_apartment_exterior.png", desc: "Modern apartment with rooftop lounge and 24/7 security." },
+      { id: "VI-702", name: "VI Studio Loft", location: "Victoria Island", type: "Studio", price: 6500000, beds: 0, size: 42, status: "For Rent / yr", img: "img/eko_apartment_interior.png", desc: "Compact studio for young professionals, walkable to restaurants and offices." }
+    ];
+
+    const fmtNGN = n => "₦" + Math.round(n).toLocaleString("en-NG");
+    const fmtUSD = n => "$" + Math.round(n).toLocaleString("en-US");
+    const money = n => n > 25000000 ? fmtNGN(n) : fmtNGN(n);
+
+    const els = {
+      q: document.getElementById("q"),
+      loc: document.getElementById("loc"),
+      type: document.getElementById("type"),
+      max: document.getElementById("max"),
+      grid: document.getElementById("grid"),
+      empty: document.getElementById("empty"),
+      drawer: document.getElementById("drawer"),
+      close: document.getElementById("close"),
+      toast: document.getElementById("toast")
+    };
+
+    const state = {
+      q: "",
+      loc: "All",
+      type: "All",
+      max: "Any",
+      active: null,
+      favs: new Set()
+    };
+
+    try {
+      const raw = localStorage.getItem("re-favs");
+      if (raw) JSON.parse(raw).forEach(x => state.favs.add(x));
+    } catch (e) {}
+
+    function setToast(text) {
+      els.toast.textContent = text;
+      els.toast.classList.add("show");
+      clearTimeout(setToast._t);
+      setToast._t = setTimeout(() => els.toast.classList.remove("show"), 1500);
+    }
+
+    function persistFavs() {
+      try { localStorage.setItem("re-favs", JSON.stringify(Array.from(state.favs))); } catch (e) {}
+    }
+
+    function uniq(arr) {
+      return Array.from(new Set(arr)).sort((a, b) => a.localeCompare(b));
+    }
+
+    function setupSelect(el, opts) {
+      el.innerHTML = opts.map(o => `<option value="${o}">${o}</option>`).join("");
+    }
+
+    function setupFilters() {
+      setupSelect(els.loc, ["All", ...uniq(listings.map(l => l.location))]);
+      setupSelect(els.type, ["All", ...uniq(listings.map(l => l.type))]);
+      setupSelect(els.max, ["Any", "₦70m", "₦150m", "₦300m", "₦600m", "₦900m"]);
+    }
+
+    function maxToNumber(v) {
+      if (v === "Any") return Infinity;
+      const map = { "₦70m": 70000000, "₦150m": 150000000, "₦300m": 300000000, "₦600m": 600000000, "₦900m": 900000000 };
+      return map[v] ?? Infinity;
+    }
+
+    function match(l) {
+      const q = state.q.trim().toLowerCase();
+      const qOk = !q || (l.name + " " + l.location + " " + l.type).toLowerCase().includes(q);
+      const locOk = state.loc === "All" || l.location === state.loc;
+      const typeOk = state.type === "All" || l.type === state.type;
+      const maxOk = l.price <= maxToNumber(state.max);
+      return qOk && locOk && typeOk && maxOk;
+    }
+
+    function badgeClass(status) {
+      return status.toLowerCase().includes("rent") ? "badge b-rent" : "badge b-sale";
+    }
+
+    function render() {
+      const rows = listings.filter(match);
+      els.grid.innerHTML = rows.map(l => {
+        const favOn = state.favs.has(l.id);
+        return `
+          <div class="card" data-id="${l.id}" role="button" tabindex="0" aria-label="${l.name}">
+            <div class="thumb">
+              <img src="${l.img}" alt="${l.name}" loading="lazy" />
+              <div class="${badgeClass(l.status)}">${l.status}</div>
+              <button class="fav ${favOn ? "on" : ""}" data-fav="${l.id}" aria-label="Toggle favorite">${favOn ? "♥" : "♡"}</button>
+            </div>
+            <div class="meta">
+              <div class="price">${money(l.price)}</div>
+              <div class="name">${l.name}</div>
+              <div class="mini"><span>${l.location}</span><span>${l.beds === 0 ? "Studio" : l.beds + " bed"}</span><span>${l.size} m²</span></div>
+            </div>
+          </div>
+        `;
+      }).join("");
+      els.empty.style.display = rows.length ? "none" : "block";
+    }
+
+    function openModal(id) {
+      const l = listings.find(x => x.id === id);
+      if (!l) return;
+      state.active = l;
+      document.getElementById("m-name").textContent = l.name;
+      document.getElementById("m-sub").textContent = l.location + " · " + l.type + " · " + l.id;
+      document.getElementById("m-price").textContent = money(l.price);
+      document.getElementById("m-size").textContent = l.size + " m²";
+      document.getElementById("m-beds").textContent = l.beds === 0 ? "Studio" : l.beds + " bedrooms";
+      document.getElementById("m-status").textContent = l.status;
+      document.getElementById("m-desc").textContent = l.desc;
+      const mi = document.getElementById("m-img");
+      mi.src = l.img;
+      mi.alt = l.name;
+
+      const deposit = l.price * 0.2;
+      const upfront = deposit + 250000;
+      document.getElementById("m-upfront").textContent = "Upfront estimate: " + money(upfront);
+
+      els.drawer.classList.add("open");
+      els.drawer.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      els.drawer.classList.remove("open");
+      els.drawer.setAttribute("aria-hidden", "true");
+      state.active = null;
+    }
+
+    function copySummary() {
+      if (!state.active) return;
+      const l = state.active;
+      const text = `${l.name} (${l.id}) — ${l.location} · ${l.type} · ${l.beds === 0 ? "Studio" : l.beds + "BR"} · ${l.size}m² · ${money(l.price)} · ${l.status}`;
+      navigator.clipboard.writeText(text).then(() => setToast("Copied")).catch(() => setToast("Copy not available"));
+    }
+
+    function schedule() {
+      if (!state.active) return;
+      setToast("Viewing request saved");
+    }
+
+    setupFilters();
+    render();
+
+    els.q.addEventListener("input", e => { state.q = e.target.value; render(); });
+    els.loc.addEventListener("change", e => { state.loc = e.target.value; render(); });
+    els.type.addEventListener("change", e => { state.type = e.target.value; render(); });
+    els.max.addEventListener("change", e => { state.max = e.target.value; render(); });
+
+    els.grid.addEventListener("click", e => {
+      const favBtn = e.target.closest("[data-fav]");
+      if (favBtn) {
+        const id = favBtn.getAttribute("data-fav");
+        if (state.favs.has(id)) state.favs.delete(id); else state.favs.add(id);
+        persistFavs();
+        render();
+        return;
+      }
+      const card = e.target.closest("[data-id]");
+      if (!card) return;
+      openModal(card.getAttribute("data-id"));
+    });
+
+    els.grid.addEventListener("keydown", e => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const card = e.target.closest("[data-id]");
+      if (!card) return;
+      e.preventDefault();
+      openModal(card.getAttribute("data-id"));
+    });
+
+    document.getElementById("close").addEventListener("click", closeModal);
+    els.drawer.addEventListener("click", e => { if (e.target === els.drawer) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+    document.getElementById("copy").addEventListener("click", copySummary);
+    document.getElementById("book").addEventListener("click", schedule);
+  </script>
+</body>
+</html>

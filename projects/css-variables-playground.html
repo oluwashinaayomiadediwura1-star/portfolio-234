@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CSS Variables Playground</title>
+  <style>
+    :root{
+      --accent:#7c6bff;
+      --border-color:#2e2e3e;
+      --card-bg:#1e1e2e;
+      --radius:12px;
+      --spacing:24px;
+      --heading-size:18px;
+      --body-size:14px;
+      --shadow-y:8px;
+      --shadow-blur:24px;
+      --shadow-opacity:.4;
+      --cols:3;
+      --gap:12px;
+      --item-h:60px;
+      --btn-radius:6px;
+      --btn-bg:#7c6bff;
+      --heading-color:#e0ddf5;
+      --body-color:#888;
+      --badge-radius:40px;
+      --item-radius:6px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,sans-serif;background:#12385b;color:#eaf4ff;min-height:100vh;display:grid;grid-template-columns:300px 1fr}
+    aside{background:#0d2a45;border-right:1px solid #244969;padding:20px;overflow-y:auto;height:100vh}
+    h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7c6bff;margin-bottom:16px;font-family:monospace}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}
+    .actions button{padding:7px 10px;background:#173654;color:#eaf4ff;border:1px solid #2e5b82;border-radius:6px;font-size:10px;font-family:monospace;cursor:pointer}
+    .actions button:hover{border-color:#7c6bff;color:#fff}
+    .row{margin-bottom:14px}
+    label{display:block;font-size:11px;color:#888;margin-bottom:5px;font-family:monospace;letter-spacing:.04em}
+    input[type=range]{width:100%;accent-color:#7c6bff;cursor:pointer}
+    input[type=color]{width:100%;height:32px;border:1px solid #222;background:none;cursor:pointer;border-radius:4px}
+    .val{font-size:10px;color:#7c6bff;font-family:monospace;text-align:right;margin-top:2px}
+    .divider{border:none;border-top:1px solid #2a5177;margin:16px 0}
+    main{padding:32px;overflow-y:auto;height:100vh}
+    .preview-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#b8d5f0;margin-bottom:12px;font-family:monospace}
+    .card{border-radius:var(--radius);background:var(--card-bg);border:1px solid var(--border-color);padding:var(--spacing);margin-bottom:16px;box-shadow:0 var(--shadow-y) var(--shadow-blur) rgba(0,0,0,var(--shadow-opacity));transition:all .3s}
+    .card h3{font-size:var(--heading-size);color:var(--heading-color);margin-bottom:10px;font-weight:600}
+    .card p{font-size:var(--body-size);color:var(--body-color);line-height:1.7}
+    .card .badge{display:inline-block;padding:3px 10px;background:var(--accent);color:#fff;border-radius:var(--badge-radius);font-size:11px;margin-top:12px;font-family:monospace}
+    .btn-demo{padding:10px 20px;background:var(--btn-bg);color:#fff;border:none;border-radius:var(--btn-radius);font-size:13px;cursor:pointer;margin-top:8px;font-weight:600;transition:all .2s}
+    .btn-demo:hover{opacity:.85}
+    .grid-demo{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:var(--gap);margin-top:8px}
+    .grid-item{background:var(--accent);border-radius:var(--item-radius);height:var(--item-h);opacity:.15;transition:all .3s}
+    .grid-item:nth-child(2){opacity:.3}
+    .grid-item:nth-child(3){opacity:.5}
+    .grid-item:nth-child(4){opacity:.7}
+    .grid-item:nth-child(5){opacity:.85}
+    .grid-item:nth-child(6){opacity:1}
+    .code-box{background:#0b2137;border:1px solid #2a5177;padding:14px;font-family:monospace;font-size:11px;color:#d6e9fb;border-radius:6px;margin-top:16px;line-height:1.8;white-space:pre-wrap}
+    .copy-note{margin-top:8px;color:#b8d5f0;font-size:11px;font-family:monospace}
+    @media(max-width:860px){
+      body{grid-template-columns:1fr}
+      aside,main{height:auto}
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="topbar">
+      <h2>CSS Variables</h2>
+      <div class="actions">
+        <button id="copyCss" type="button">COPY CSS</button>
+        <button id="resetAll" type="button">RESET</button>
+      </div>
+    </div>
+
+    <div class="row"><label>--accent color</label><input type="color" id="accent" value="#7c6bff"><div class="val" id="cv-accent">#7c6bff</div></div>
+    <div class="row"><label>--border-color</label><input type="color" id="bcolor" value="#2e2e3e"><div class="val" id="cv-border">#2e2e3e</div></div>
+    <div class="row"><label>--card-bg</label><input type="color" id="cbg" value="#1e1e2e"><div class="val" id="cv-cbg">#1e1e2e</div></div>
+    <hr class="divider">
+    <div class="row"><label>--radius: <span id="rv-radius">12</span>px</label><input type="range" id="radius" min="0" max="32" value="12"></div>
+    <div class="row"><label>--spacing: <span id="rv-space">24</span>px</label><input type="range" id="spacing" min="8" max="48" value="24"></div>
+    <div class="row"><label>--heading-size: <span id="rv-hs">18</span>px</label><input type="range" id="headingSize" min="12" max="32" value="18"></div>
+    <div class="row"><label>--body-size: <span id="rv-bs">14</span>px</label><input type="range" id="bodySize" min="10" max="20" value="14"></div>
+    <hr class="divider">
+    <div class="row"><label>--shadow-y: <span id="rv-sy">8</span>px</label><input type="range" id="shadowY" min="0" max="40" value="8"></div>
+    <div class="row"><label>--shadow-blur: <span id="rv-sb">24</span>px</label><input type="range" id="shadowBlur" min="0" max="80" value="24"></div>
+    <hr class="divider">
+    <div class="row"><label>grid --cols: <span id="rv-col">3</span></label><input type="range" id="cols" min="2" max="6" value="3"></div>
+    <div class="row"><label>grid --gap: <span id="rv-gap">12</span>px</label><input type="range" id="gap" min="0" max="32" value="12"></div>
+    <div class="row"><label>grid item --item-h: <span id="rv-ih">60</span>px</label><input type="range" id="itemHeight" min="20" max="120" value="60"></div>
+    <div class="row"><label>--btn-radius: <span id="rv-br">6</span>px</label><input type="range" id="btnRadius" min="0" max="40" value="6"></div>
+  </aside>
+
+  <main>
+    <div class="preview-label">Live Preview</div>
+    <div class="card">
+      <h3>Design Token Card</h3>
+      <p>Every style here is driven by CSS custom properties. Adjust the controls to see the cascade update in real time.</p>
+      <span class="badge">--accent</span><br>
+      <button class="btn-demo" type="button">Styled Button</button>
+    </div>
+
+    <div class="card">
+      <h3>CSS Grid Layout</h3>
+      <p>Column count, gap, and item height are all controlled by variables.</p>
+      <div class="grid-demo">
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+      </div>
+    </div>
+
+    <div class="code-box" id="codeBox"></div>
+    <div class="copy-note" id="copyNote">Settings save automatically in your browser.</div>
+  </main>
+
+  <script>
+    const storageKey="css-vars-playground-v1";
+    const defaults={
+      accent:"#7c6bff",
+      bcolor:"#2e2e3e",
+      cbg:"#1e1e2e",
+      radius:12,
+      spacing:24,
+      headingSize:18,
+      bodySize:14,
+      shadowY:8,
+      shadowBlur:24,
+      cols:3,
+      gap:12,
+      itemHeight:60,
+      btnRadius:6
+    };
+
+    const fields={
+      accent:document.getElementById("accent"),
+      bcolor:document.getElementById("bcolor"),
+      cbg:document.getElementById("cbg"),
+      radius:document.getElementById("radius"),
+      spacing:document.getElementById("spacing"),
+      headingSize:document.getElementById("headingSize"),
+      bodySize:document.getElementById("bodySize"),
+      shadowY:document.getElementById("shadowY"),
+      shadowBlur:document.getElementById("shadowBlur"),
+      cols:document.getElementById("cols"),
+      gap:document.getElementById("gap"),
+      itemHeight:document.getElementById("itemHeight"),
+      btnRadius:document.getElementById("btnRadius")
+    };
+
+    const outputs={
+      accent:document.getElementById("cv-accent"),
+      border:document.getElementById("cv-border"),
+      cbg:document.getElementById("cv-cbg"),
+      radius:document.getElementById("rv-radius"),
+      spacing:document.getElementById("rv-space"),
+      headingSize:document.getElementById("rv-hs"),
+      bodySize:document.getElementById("rv-bs"),
+      shadowY:document.getElementById("rv-sy"),
+      shadowBlur:document.getElementById("rv-sb"),
+      cols:document.getElementById("rv-col"),
+      gap:document.getElementById("rv-gap"),
+      itemHeight:document.getElementById("rv-ih"),
+      btnRadius:document.getElementById("rv-br")
+    };
+
+    const codeBox=document.getElementById("codeBox");
+    const copyCss=document.getElementById("copyCss");
+    const resetAll=document.getElementById("resetAll");
+    const copyNote=document.getElementById("copyNote");
+
+    function loadState(){
+      try{
+        const raw=localStorage.getItem(storageKey);
+        if(!raw) return {...defaults};
+        return {...defaults,...JSON.parse(raw)};
+      }catch{
+        return {...defaults};
+      }
+    }
+
+    let state=loadState();
+
+    function px(n){
+      return `${n}px`;
+    }
+
+    function codeFor(s){
+      return `:root {
+  --accent: ${s.accent};
+  --border-color: ${s.bcolor};
+  --card-bg: ${s.cbg};
+  --radius: ${px(s.radius)};
+  --spacing: ${px(s.spacing)};
+  --heading-size: ${px(s.headingSize)};
+  --body-size: ${px(s.bodySize)};
+  --shadow-y: ${px(s.shadowY)};
+  --shadow-blur: ${px(s.shadowBlur)};
+  --cols: ${s.cols};
+  --gap: ${px(s.gap)};
+  --item-h: ${px(s.itemHeight)};
+  --btn-radius: ${px(s.btnRadius)};
+  --btn-bg: ${s.accent};
+}`;
+    }
+
+    function render(){
+      document.documentElement.style.setProperty("--accent",state.accent);
+      document.documentElement.style.setProperty("--border-color",state.bcolor);
+      document.documentElement.style.setProperty("--card-bg",state.cbg);
+      document.documentElement.style.setProperty("--radius",px(state.radius));
+      document.documentElement.style.setProperty("--spacing",px(state.spacing));
+      document.documentElement.style.setProperty("--heading-size",px(state.headingSize));
+      document.documentElement.style.setProperty("--body-size",px(state.bodySize));
+      document.documentElement.style.setProperty("--shadow-y",px(state.shadowY));
+      document.documentElement.style.setProperty("--shadow-blur",px(state.shadowBlur));
+      document.documentElement.style.setProperty("--cols",state.cols);
+      document.documentElement.style.setProperty("--gap",px(state.gap));
+      document.documentElement.style.setProperty("--item-h",px(state.itemHeight));
+      document.documentElement.style.setProperty("--btn-radius",px(state.btnRadius));
+      document.documentElement.style.setProperty("--btn-bg",state.accent);
+
+      fields.accent.value=state.accent;
+      fields.bcolor.value=state.bcolor;
+      fields.cbg.value=state.cbg;
+      fields.radius.value=state.radius;
+      fields.spacing.value=state.spacing;
+      fields.headingSize.value=state.headingSize;
+      fields.bodySize.value=state.bodySize;
+      fields.shadowY.value=state.shadowY;
+      fields.shadowBlur.value=state.shadowBlur;
+      fields.cols.value=state.cols;
+      fields.gap.value=state.gap;
+      fields.itemHeight.value=state.itemHeight;
+      fields.btnRadius.value=state.btnRadius;
+
+      outputs.accent.textContent=state.accent;
+      outputs.border.textContent=state.bcolor;
+      outputs.cbg.textContent=state.cbg;
+      outputs.radius.textContent=state.radius;
+      outputs.spacing.textContent=state.spacing;
+      outputs.headingSize.textContent=state.headingSize;
+      outputs.bodySize.textContent=state.bodySize;
+      outputs.shadowY.textContent=state.shadowY;
+      outputs.shadowBlur.textContent=state.shadowBlur;
+      outputs.cols.textContent=state.cols;
+      outputs.gap.textContent=state.gap;
+      outputs.itemHeight.textContent=state.itemHeight;
+      outputs.btnRadius.textContent=state.btnRadius;
+
+      codeBox.textContent=codeFor(state);
+      localStorage.setItem(storageKey,JSON.stringify(state));
+    }
+
+    function updateNumber(key,value){
+      state[key]=Number(value);
+      render();
+    }
+
+    fields.accent.addEventListener("input",e=>{state.accent=e.target.value;render();});
+    fields.bcolor.addEventListener("input",e=>{state.bcolor=e.target.value;render();});
+    fields.cbg.addEventListener("input",e=>{state.cbg=e.target.value;render();});
+    fields.radius.addEventListener("input",e=>updateNumber("radius",e.target.value));
+    fields.spacing.addEventListener("input",e=>updateNumber("spacing",e.target.value));
+    fields.headingSize.addEventListener("input",e=>updateNumber("headingSize",e.target.value));
+    fields.bodySize.addEventListener("input",e=>updateNumber("bodySize",e.target.value));
+    fields.shadowY.addEventListener("input",e=>updateNumber("shadowY",e.target.value));
+    fields.shadowBlur.addEventListener("input",e=>updateNumber("shadowBlur",e.target.value));
+    fields.cols.addEventListener("input",e=>updateNumber("cols",e.target.value));
+    fields.gap.addEventListener("input",e=>updateNumber("gap",e.target.value));
+    fields.itemHeight.addEventListener("input",e=>updateNumber("itemHeight",e.target.value));
+    fields.btnRadius.addEventListener("input",e=>updateNumber("btnRadius",e.target.value));
+
+    copyCss.addEventListener("click",async()=>{
+      try{
+        await navigator.clipboard.writeText(codeFor(state));
+        copyNote.textContent="CSS copied to clipboard.";
+      }catch{
+        copyNote.textContent="Copy failed. Select the code manually.";
+      }
+    });
+
+    resetAll.addEventListener("click",()=>{
+      state={...defaults};
+      copyNote.textContent="Playground reset to default values.";
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

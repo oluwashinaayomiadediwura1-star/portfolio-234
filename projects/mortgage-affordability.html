@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Mortgage & Affordability</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07070b;
+      --panel:#0f0f14;
+      --panel2:#15151f;
+      --border:#232334;
+      --text:#eee9ff;
+      --muted:#7a7692;
+      --accent:#7c6bff;
+      --green:#3dffa0;
+      --orange:#ff8c42;
+      --red:#ff4d6d;
+      --radius:14px;
+    }
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background:
+        radial-gradient(900px 420px at 18% 20%, rgba(124,107,255,.24), transparent 60%),
+        radial-gradient(900px 520px at 85% 70%, rgba(255,140,66,.16), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      padding:18px;
+      min-height:100vh;
+    }
+    .wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:12px}
+    .panel{
+      background:rgba(15,15,20,.85);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      backdrop-filter:blur(14px);
+    }
+    .head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);
+    }
+    .head-media{
+      margin-top:12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      overflow:hidden;
+      height:118px;
+      position:relative;
+    }
+    .head-media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05)}
+    .head-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(7,7,11,.86), rgba(7,7,11,.22) 60%, rgba(7,7,11,.10))}
+    .head-media span{position:absolute;left:12px;bottom:10px;right:12px;font-size:12px;color:rgba(238,233,255,.86);font-weight:800;letter-spacing:-.02em;z-index:1}
+    h1{font-size:15px;letter-spacing:-.02em}
+    .sub{margin-top:6px;color:var(--muted);font-size:12px;line-height:1.6}
+    .form{padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+    .row{display:grid;grid-template-columns:1fr 140px;gap:10px;align-items:end}
+    label{font-size:10px;color:var(--muted);letter-spacing:.10em;text-transform:uppercase;margin-bottom:6px;display:block}
+    input,select{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-size:12px;
+      outline:none;
+    }
+    input:focus,select:focus{border-color:rgba(124,107,255,.7)}
+    .hint{font-size:11px;color:var(--muted);line-height:1.5}
+    .btn{
+      padding:10px 12px;
+      border-radius:12px;
+      border:none;
+      cursor:pointer;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:#fff;
+      background:var(--accent);
+    }
+    .btn.secondary{background:transparent;border:1px solid var(--border);color:var(--text)}
+    .btns{display:flex;gap:10px}
+    .right{display:flex;flex-direction:column;gap:12px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px}
+    .media{
+      height:120px;
+      border-bottom:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+    }
+    .media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05)}
+    .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.62))}
+    .media .cap{position:absolute;left:12px;bottom:10px;right:12px;font-size:11px;color:rgba(238,233,255,.86);z-index:1}
+    .kpi{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      border-radius:14px;
+      padding:10px 12px;
+    }
+    .k{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .v{margin-top:8px;font-size:16px;font-weight:900;letter-spacing:-.02em}
+    .v.small{font-size:13px;font-weight:800;color:rgba(238,233,255,.88)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px 12px}
+    .box{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:12px;
+      overflow:hidden;
+    }
+    .box h2{font-size:12px;letter-spacing:.08em;margin-bottom:10px}
+    .bar{
+      height:10px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .bar > div{height:100%;display:flex}
+    .seg{height:100%}
+    .seg.p{background:rgba(124,107,255,.9)}
+    .seg.i{background:rgba(255,140,66,.9)}
+    .seg.t{background:rgba(61,255,160,.85)}
+    .seg.h{background:rgba(255,77,109,.85)}
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:11px}
+    .dot{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px}
+    .dot.p{background:rgba(124,107,255,.9)}
+    .dot.i{background:rgba(255,140,66,.9)}
+    .dot.t{background:rgba(61,255,160,.85)}
+    .dot.h{background:rgba(255,77,109,.85)}
+    table{width:100%;border-collapse:collapse;font-size:11px;color:rgba(238,233,255,.9)}
+    th,td{padding:8px 8px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+    th{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    td.r{text-align:right;font-variant-numeric:tabular-nums}
+    .warn{
+      margin-top:10px;
+      border:1px solid rgba(255,140,66,.25);
+      background:rgba(255,140,66,.10);
+      color:rgba(238,233,255,.88);
+      padding:10px 12px;
+      border-radius:14px;
+      font-size:11px;
+      line-height:1.6;
+      display:none;
+    }
+    @media (max-width:920px){
+      .wrap{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr 160px}
+      .kpis{grid-template-columns:repeat(2,1fr)}
+      .split{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel">
+      <div class="head">
+        <h1>Mortgage & Affordability Calculator</h1>
+        <div class="sub">Calculate monthly payments (principal, interest, taxes, insurance) and get a quick affordability signal. Works offline.</div>
+        <div class="head-media">
+          <img alt="New home in Lagos" src="img/mortgage_home_exterior.png" />
+          <span>Estimate payments in seconds</span>
+        </div>
+      </div>
+      <div class="form">
+        <div class="row">
+          <div>
+            <label for="price">Home Price</label>
+            <input id="price" inputmode="decimal" value="180000000" />
+            <div class="hint">Currency: NGN (editable). Example: 180,000,000</div>
+          </div>
+          <div>
+            <label for="term">Term</label>
+            <select id="term">
+              <option value="10">10 years</option>
+              <option value="15">15 years</option>
+              <option value="20">20 years</option>
+              <option value="25">25 years</option>
+              <option value="30" selected>30 years</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="down">Down Payment</label>
+            <input id="down" inputmode="decimal" value="36000000" />
+            <div class="hint">Tip: set 20% to avoid extra fees in many markets.</div>
+          </div>
+          <div>
+            <label for="rate">Interest Rate</label>
+            <input id="rate" inputmode="decimal" value="18" />
+            <div class="hint">% per year</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="tax">Property Tax (monthly)</label>
+            <input id="tax" inputmode="decimal" value="60000" />
+          </div>
+          <div>
+            <label for="ins">Insurance (monthly)</label>
+            <input id="ins" inputmode="decimal" value="35000" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="income">Monthly Net Income</label>
+            <input id="income" inputmode="decimal" value="2500000" />
+            <div class="hint">Used only for affordability ratio.</div>
+          </div>
+          <div>
+            <label for="fees">Other Housing Costs</label>
+            <input id="fees" inputmode="decimal" value="45000" />
+            <div class="hint">Service charge, HOA, utilities</div>
+          </div>
+        </div>
+        <div class="btns">
+          <button class="btn" id="calc">Calculate</button>
+          <button class="btn secondary" id="reset">Reset</button>
+        </div>
+        <div class="warn" id="warn"></div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="panel">
+        <div class="media">
+          <img alt="Mortgage calculation concept" src="img/eko_apartment_interior.png" />
+          <div class="cap">Monthly payment, affordability ratio, and amortization preview</div>
+        </div>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="k">Monthly Payment</div>
+            <div class="v" id="k-total">—</div>
+            <div class="v small" id="k-break">—</div>
+          </div>
+          <div class="kpi">
+            <div class="k">Loan Amount</div>
+            <div class="v" id="k-loan">—</div>
+            <div class="v small" id="k-dp">—</div>
+          </div>
+          <div class="kpi">
+            <div class="k">Affordability</div>
+            <div class="v" id="k-ratio">—</div>
+            <div class="v small" id="k-signal">—</div>
+          </div>
+        </div>
+        <div class="split">
+          <div class="box">
+            <h2>Payment Breakdown</h2>
+            <div class="bar"><div id="bar"></div></div>
+            <div class="legend">
+              <span><span class="dot p"></span>Principal</span>
+              <span><span class="dot i"></span>Interest</span>
+              <span><span class="dot t"></span>Tax</span>
+              <span><span class="dot h"></span>Insurance + Fees</span>
+            </div>
+          </div>
+          <div class="box">
+            <h2>First 12 Months (Est.)</h2>
+            <div style="max-height:240px;overflow:auto;border-radius:10px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th class="r">Payment</th>
+                    <th class="r">Principal</th>
+                    <th class="r">Interest</th>
+                    <th class="r">Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="tbl"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const byId = id => document.getElementById(id);
+    const el = {
+      price: byId("price"),
+      down: byId("down"),
+      rate: byId("rate"),
+      term: byId("term"),
+      tax: byId("tax"),
+      ins: byId("ins"),
+      income: byId("income"),
+      fees: byId("fees"),
+      warn: byId("warn"),
+      kTotal: byId("k-total"),
+      kBreak: byId("k-break"),
+      kLoan: byId("k-loan"),
+      kDp: byId("k-dp"),
+      kRatio: byId("k-ratio"),
+      kSignal: byId("k-signal"),
+      bar: byId("bar"),
+      tbl: byId("tbl")
+    };
+
+    const money = n => "₦" + Math.round(n).toLocaleString("en-NG");
+
+    function num(v) {
+      const x = String(v).replace(/[, ]+/g, "").trim();
+      const n = Number(x);
+      return Number.isFinite(n) ? n : NaN;
+    }
+
+    function clamp(n, a, b) { return Math.min(b, Math.max(a, n)); }
+
+    function calcMonthlyPayment(P, annualRate, years) {
+      const r = annualRate / 100 / 12;
+      const n = years * 12;
+      if (P <= 0) return { payment: 0, r, n };
+      if (r === 0) return { payment: P / n, r, n };
+      const payment = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      return { payment, r, n };
+    }
+
+    function renderBar(parts) {
+      const total = parts.reduce((a, b) => a + b.v, 0);
+      el.bar.innerHTML = parts.map(p => {
+        const w = total <= 0 ? 0 : (p.v / total) * 100;
+        return `<div class="seg ${p.c}" style="width:${w}%" title="${p.l}: ${money(p.v)}"></div>`;
+      }).join("");
+    }
+
+    function renderTable(loan, r, basePayment, months) {
+      let bal = loan;
+      const rows = [];
+      for (let i = 1; i <= months; i++) {
+        const interest = bal * r;
+        const principal = Math.max(0, basePayment - interest);
+        bal = Math.max(0, bal - principal);
+        rows.push({
+          i,
+          payment: basePayment,
+          principal,
+          interest,
+          bal
+        });
+      }
+      el.tbl.innerHTML = rows.map(x => `
+        <tr>
+          <td>${x.i}</td>
+          <td class="r">${money(x.payment)}</td>
+          <td class="r">${money(x.principal)}</td>
+          <td class="r">${money(x.interest)}</td>
+          <td class="r">${money(x.bal)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function signal(ratio) {
+      if (!Number.isFinite(ratio)) return { label: "—", color: "rgba(238,233,255,.88)", msg: "" };
+      if (ratio <= 0.25) return { label: "Comfortable", color: "var(--green)", msg: "" };
+      if (ratio <= 0.35) return { label: "Stretch", color: "var(--orange)", msg: "You may be ok if other debts are low." };
+      return { label: "High Risk", color: "var(--red)", msg: "Consider a larger down payment or lower price." };
+    }
+
+    function calculate() {
+      const price = num(el.price.value);
+      const down = num(el.down.value);
+      const rate = num(el.rate.value);
+      const term = num(el.term.value);
+      const tax = num(el.tax.value);
+      const ins = num(el.ins.value);
+      const income = num(el.income.value);
+      const fees = num(el.fees.value);
+
+      const bad =
+        !Number.isFinite(price) || price <= 0 ||
+        !Number.isFinite(down) || down < 0 ||
+        !Number.isFinite(rate) || rate < 0 ||
+        !Number.isFinite(term) || term <= 0 ||
+        !Number.isFinite(tax) || tax < 0 ||
+        !Number.isFinite(ins) || ins < 0 ||
+        !Number.isFinite(income) || income < 0 ||
+        !Number.isFinite(fees) || fees < 0;
+
+      if (bad) {
+        el.warn.style.display = "block";
+        el.warn.textContent = "Check your inputs: numbers must be valid and non-negative.";
+        return;
+      }
+
+      const dp = clamp(down, 0, price);
+      const loan = Math.max(0, price - dp);
+      const { payment: basePayment, r } = calcMonthlyPayment(loan, rate, term);
+
+      const monthlyTax = tax;
+      const monthlyIns = ins;
+      const monthlyFees = fees;
+
+      const total = basePayment + monthlyTax + monthlyIns + monthlyFees;
+      const ratio = income > 0 ? (total / income) : NaN;
+
+      const iOnly = loan * r;
+      const principal = Math.max(0, basePayment - iOnly);
+
+      el.kTotal.textContent = money(total);
+      el.kBreak.textContent = `${money(principal)} principal · ${money(iOnly)} interest`;
+      el.kLoan.textContent = money(loan);
+      el.kDp.textContent = `Down payment: ${money(dp)}`;
+      el.kRatio.textContent = Number.isFinite(ratio) ? Math.round(ratio * 100) + "%" : "—";
+
+      const s = signal(ratio);
+      el.kSignal.textContent = s.label;
+      el.kSignal.style.color = s.color;
+
+      el.warn.style.display = s.msg ? "block" : "none";
+      el.warn.textContent = s.msg;
+
+      renderBar([
+        { l: "Principal", v: principal, c: "p" },
+        { l: "Interest", v: iOnly, c: "i" },
+        { l: "Tax", v: monthlyTax, c: "t" },
+        { l: "Insurance + Fees", v: monthlyIns + monthlyFees, c: "h" }
+      ]);
+
+      renderTable(loan, r, basePayment, 12);
+    }
+
+    byId("calc").addEventListener("click", calculate);
+    byId("reset").addEventListener("click", () => {
+      el.price.value = "180000000";
+      el.down.value = "36000000";
+      el.rate.value = "18";
+      el.term.value = "30";
+      el.tax.value = "60000";
+      el.ins.value = "35000";
+      el.income.value = "2500000";
+      el.fees.value = "45000";
+      el.warn.style.display = "none";
+      calculate();
+    });
+
+    ["price","down","rate","tax","ins","income","fees"].forEach(id => byId(id).addEventListener("input", () => calculate()));
+    byId("term").addEventListener("change", () => calculate());
+
+    calculate();
+  </script>
+</body>
+</html>
